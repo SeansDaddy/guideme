@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+<link rel="canonical" href="{{ canonical_url }}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:url" content="{{ canonical_url }}">
+<meta property="og:site_name" content="Guide Me Xian">
+<meta property="og:locale" content="zh_CN">
+<link rel="stylesheet" href="/static/style.css">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon.png">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+<body>
+<header class="site-header">
+<div class="site-header-inner">
+<a class="site-title" href="/">Guide Me Xian</a>
+<nav class="breadcrumb">
+<a href="/">Guide Me Xian</a> <span class="sep">/</span>
+<a href="/xian/">西安</a> <span class="sep">/</span>
+<span class="current">{{ article_title_plain }}</span>
+</nav>
+</div>
+</header>
+<main>
+<article class="article">
+<header class="article-header">
+<div class="article-group">
+<span class="dot" style="background:#{{ category_color }}"></span>
+<span class="group-label">{{ category }}</span>
+</div>
+<h1 class="article-title">{{ title }}</h1>
+<p class="article-subtitle">{{ subtitle }}</p>
+</header>
+<div class="article-locmap-wrap">
+<div id="article-locmap"></div>
+<p class="article-locmap-hint">大致位置。 <a href="/xian/#city-map">在城市地图里看</a></p>
+</div>
+<div class="article-body">
+{{ body }}
+</div>
+<nav class="article-foot-nav">
+<a href="/xian/">← 回到《怎么看懂西安》</a>
+</nav>
+</article>
+</main>
+<footer class="site-footer">
+<div class="site-footer-inner">
+<p>Guide Me Xian · 西安现场观察手册</p>
+</div>
+</footer>
+<script>
+(function(){
+var map = L.map('article-locmap', {
+scrollWheelZoom: false,
+dragging: true,
+zoomControl: true,
+doubleClickZoom: false
+}).setView([{{ lat }}, {{ lng }}], 14);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+maxZoom: 18,
+attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors'
+}).addTo(map);
+L.circleMarker([{{ lat }}, {{ lng }}], {
+radius: 9,
+color: "#{{ category_color }}",
+weight: 3,
+fillColor: "#{{ category_color }}",
+fillOpacity: 0.85
+}).addTo(map).bindTooltip("{{ article_title_plain }}", {permanent: false, direction: 'top'});
+})();
+</script>
+</body>
+</html>

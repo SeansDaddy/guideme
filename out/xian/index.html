@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>怎么看懂西安 — Guide Me Xian</title>
+<meta name="description" content="教你站在现场看懂西安每一处地点的观察手册。">
+<link rel="canonical" href="https://xian.guideme.city/xian/">
+<link rel="stylesheet" href="/static/style.css">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon.png">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+<body>
+<header class="site-header">
+<div class="site-header-inner">
+<a class="site-title" href="/">Guide Me Xian</a>
+<nav class="breadcrumb">
+<span class="current">西安</span>
+</nav>
+</div>
+</header>
+<main>
+<div class="city-page">
+<header class="city-header">
+<h1 class="city-title">怎么看懂西安</h1>
+<p class="city-desc">西安是中华文明的核心现场之一。这份手册不教你哪里好吃、哪里拍照好看，而是教你到了每一个地点，往哪儿看，能读出什么。</p>
+<p class="city-desc">目前已有 <strong>5</strong> 篇，持续更新中。</p>
+<a class="city-map-link" href="#city-map">在城市地图里看所有地点 ↓</a>
+</header>
+
+<div class="city-article-list">
+
+<div class="city-group">
+<h2 class="city-group-name">
+<span class="dot" style="background:#6b3fa0"></span>
+宫廷与遗址
+</h2>
+<ul class="city-group-list">
+
+<li>
+<a href="/xian/daminggong/">去大明宫国家遗址公园前先看懂：这座曾经的世界最大宫殿，现在只剩下夯土和地面标识</a>
+<span class="article-subtitle-inline">遗址公园的空间逻辑</span>
+</li>
+
+</ul>
+</div>
+
+<div class="city-group">
+<h2 class="city-group-name">
+<span class="dot" style="background:#7e5109"></span>
+宗教与社区
+</h2>
+<ul class="city-group-list">
+
+<li>
+<a href="/xian/dayan_tower/">去大雁塔前先看懂：玄奘怎样把印度取来的经文叠成一座七层方塔</a>
+<span class="article-subtitle-inline">玄奘译经场与雁塔形制</span>
+</li>
+
+</ul>
+</div>
+
+<div class="city-group">
+<h2 class="city-group-name">
+<span class="dot" style="background:#8b6914"></span>
+城垣与防御
+</h2>
+<ul class="city-group-list">
+
+<li>
+<a href="/xian/hanguangmen_wall/">去含光门前先看懂：西安城墙不是一座"古代城墙"，而是八个时代的城墙叠在一起</a>
+<span class="article-subtitle-inline">城墙断面与历代叠压</span>
+</li>
+
+</ul>
+</div>
+
+<div class="city-group">
+<h2 class="city-group-name">
+<span class="dot" style="background:#1a5e63"></span>
+历史街区
+</h2>
+<ul class="city-group-list">
+
+<li>
+<a href="/xian/huifang/">去回坊前先看懂：围寺而居的穆斯林社区怎样在唐代坊里制度的壳里长了两千年</a>
+<span class="article-subtitle-inline">七寺十三坊与围寺而居</span>
+</li>
+
+</ul>
+</div>
+
+<div class="city-group">
+<h2 class="city-group-name">
+<span class="dot" style="background:#b74611"></span>
+博物馆与墓葬
+</h2>
+<ul class="city-group-list">
+
+<li>
+<a href="/xian/shaanxi_museum/">去陕西历史博物馆前先看懂：何家村那两瓮一罐，埋的是一部微型唐代国库</a>
+<span class="article-subtitle-inline">大唐遗宝与唐代财政制度</span>
+</li>
+
+</ul>
+</div>
+
+</div>
+
+<div class="city-map-section" id="city-map">
+<h2 class="city-map-title">西安现场观察地图</h2>
+<div id="city-map-container"></div>
+</div>
+</div>
+</main>
+<footer class="site-footer">
+<div class="site-footer-inner">
+<p>Guide Me Xian · 西安现场观察手册</p>
+</div>
+</footer>
+<script>
+(function(){
+var map = L.map('city-map-container', {
+scrollWheelZoom: false,
+dragging: true,
+zoomControl: true,
+doubleClickZoom: false
+}).setView([34.25, 108.96], 12);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+maxZoom: 18,
+attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+var markers = [
+
+{ lat: 34.2509, lng: 108.9632, title: "去大明宫国家遗址公园前先看懂：这座曾经的世界最大宫殿，现在只剩下夯土和地面标识", slug: "daminggong", color: "#6b3fa0" },
+
+{ lat: 34.2176, lng: 108.9598, title: "去大雁塔前先看懂：玄奘怎样把印度取来的经文叠成一座七层方塔", slug: "dayan_tower", color: "#7e5109" },
+
+{ lat: 34.2554, lng: 108.9449, title: "去含光门前先看懂：西安城墙不是一座"古代城墙"，而是八个时代的城墙叠在一起", slug: "hanguangmen_wall", color: "#8b6914" },
+
+{ lat: 34.2613, lng: 108.9384, title: "去回坊前先看懂：围寺而居的穆斯林社区怎样在唐代坊里制度的壳里长了两千年", slug: "huifang", color: "#1a5e63" },
+
+{ lat: 34.2209, lng: 108.9563, title: "去陕西历史博物馆前先看懂：何家村那两瓮一罐，埋的是一部微型唐代国库", slug: "shaanxi_museum", color: "#b74611" },
+
+];
+
+markers.forEach(function(m) {
+L.circleMarker([m.lat, m.lng], {
+radius: 8,
+color: m.color,
+weight: 2.5,
+fillColor: m.color,
+fillOpacity: 0.8
+}).addTo(map).bindTooltip('<a href="/xian/'+m.slug+'/">'+m.title+'</a>', {permanent: false, direction: 'top'});
+});
+})();
+</script>
+</body>
+</html>
