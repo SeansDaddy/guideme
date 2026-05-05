@@ -91,7 +91,7 @@ def build():
             "category_color":    CATEGORY_COLORS.get(fm.get("category", ""), "555555"),
             "lat":               lat,
             "lng":               lng,
-            "article_title_plain": fm.get("title", slug),
+            "article_title_plain": fm.get("title", slug).replace('"', '\\"').replace('\u201c', '\\"').replace('\u201d', '\\"'),
             "description":        fm.get("description", fm.get("subtitle", "")),
             "body":              md_to_html(body),
             "canonical_url":     f"https://xian.guideme.city/xian/{slug}/",
