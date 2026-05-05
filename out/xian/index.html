@@ -294,31 +294,11 @@ zoomControl: true,
 doubleClickZoom: false
 }).setView([34.25, 108.96], 12);
 
-// Try OSM first, fall back to 高德 if blocked
-var layers = [
-  { url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', attr: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>' },
-  { url: 'https://wprd0{s}.is.autonavi.com/appmaptile?x={x}&y={y}&z={z}&lang=zh_cn&size=1&scale=1&style=7', subdomains: "1234", attr: '&copy; <a href="https://lbs.amap.com/" target="_blank" rel="noopener noreferrer">高德地图</a>' }
-];
-
-var currentLayer = 0;
-function addLayer(idx) {
-  var cfg = {
+L.tileLayer('https://wprd0{s}.is.autonavi.com/appmaptile?x={x}&y={y}&z={z}&lang=zh_cn&size=1&scale=1&style=7', {
+    subdomains: "1234",
     maxZoom: 18,
-    attribution: layers[idx].attr,
-    errorTileUrl: 'https://placehold.it/256x256/f5f5f5/999999?text=Loading'
-  };
-  if (layers[idx].subdomains) cfg.subdomains = layers[idx].subdomains;
-  var tileLayer = L.tileLayer(layers[idx].url, cfg);
-  tileLayer.on('tileerror', function(e) {
-    if (currentLayer < layers.length - 1) {
-      currentLayer++;
-      map.removeLayer(tileLayer);
-      addLayer(currentLayer);
-    }
-  });
-  tileLayer.addTo(map);
-}
-addLayer(0);
+    attribution: '&copy; <a href="https://lbs.amap.com/" target="_blank" rel="noopener noreferrer">高德地图</a>'
+}).addTo(map);
 
 var markers = [
 
