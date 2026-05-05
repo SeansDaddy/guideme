@@ -259,6 +259,7 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 1.2rem; }
   font-weight: 700;
   margin-bottom: 1.2rem;
   font-family: var(--font-ui);
+  /* 高德地图瓦片 */
 }
 #city-map-container { height: 480px; width: 100%; border: 1px solid var(--border); border-radius: 4px; }
 
