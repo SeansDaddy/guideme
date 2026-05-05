@@ -119,7 +119,7 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 1.2rem; }
 
 /* ── ARTICLE MAP ─────────────────────────────────────── */
 .article-locmap-wrap { margin-bottom: 2rem; }
-#article-locmap { height: 220px; border: 1px solid var(--border); border-radius: 4px; }
+#article-locmap { height: 220px; width: 100%; border: 1px solid var(--border); border-radius: 4px; }
 .article-locmap-hint {
   font-family: var(--font-ui);
   font-size: 0.78rem;
@@ -260,7 +260,7 @@ main { max-width: var(--max-w); margin: 0 auto; padding: 0 1.2rem; }
   margin-bottom: 1.2rem;
   font-family: var(--font-ui);
 }
-#city-map-container { height: 480px; border: 1px solid var(--border); border-radius: 4px; }
+#city-map-container { height: 480px; width: 100%; border: 1px solid var(--border); border-radius: 4px; }
 
 /* ── RESPONSIVE ──────────────────────────────────────── */
 @media (max-width: 600px) {
