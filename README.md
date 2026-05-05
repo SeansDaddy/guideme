@@ -14,3 +14,4 @@ python3 build.py
 ```
 
 生成静态文件在 `out/` 目录。
+# trigger redeploy 21:59:30
