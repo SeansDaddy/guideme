@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "guideme",
+  "compatibility_date": "2026-05-07",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "out"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
